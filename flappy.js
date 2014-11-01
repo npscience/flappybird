@@ -7,9 +7,10 @@ var player;
 var player2;
 var gamewidth;
 var gameheight;
+var gap;
 
-gamewidth = 670;
-gameheight = 400;
+gamewidth = 1000;
+gameheight = 800;
 // Phaser parameters:
 // - game width
 // - game height
@@ -26,6 +27,7 @@ game.load.image("Bman","assets/flappy_batman.png"); //load an image file & name 
 game.load.image("Sman","assets/flappy_superman.png");
 game.load.image("THOR","assets/thor2.png");
 game.load.audio("score","assets/point.ogg"); //load a sound file & name it
+game.load.image("Pipe", "assets/pipe.png"); //pipe image
 
 }
 
@@ -35,15 +37,15 @@ game.load.audio("score","assets/point.ogg"); //load a sound file & name it
 function create() {
     // set the background colour of the scene
     game.stage.setBackgroundColor("#FF0000"); //sets the background colour of the stage
-    game.add.text(100, 180,
+    game.add.text(300, 380,
         "Welcome to OUR AWESOME game!", {font: "30px Calibri", fill: "#FFFF00"}
     );
     game.add.text(15, 15, "Created by NP & JM", {
         font: "18px Calibri",
         fill: "#FFFFFF"
     });
-    game.add.text(630,10,score);
-    game.add.text(630, 380, "V1.0", {font: "12px Calibri", fill: "#FFFFFF"}); //adds text to the stage
+    game.add.text(gamewidth-20, 10, score);
+    game.add.text(gamewidth-40, gameheight-20, "V1.0", {font: "12px Calibri", fill: "#FFFFFF"}); //adds text to the stage
     //game.add.sprite(350, 260, "Bman"); //load the player img file and place it on the screen
     //game.add.sprite(250, 270, "Sman");
     //game.add.sprite(300, 260, "THOR");
@@ -59,8 +61,8 @@ function create() {
     //alert(score); shows score in alert box at beginning
     var x = 150;
     var y = 200;
-    player = game.add.sprite(x,y,"THOR");
-    player2 = game.add.sprite(x,y,"Bman");
+    player = game.add.sprite(x, y, "THOR");
+    player2 = game.add.sprite(x, y, "Bman");
     game.input
         .keyboard
         .addKey(Phaser.Keyboard.LEFT)
@@ -94,6 +96,58 @@ function create() {
         .addKey(Phaser.Keyboard.S)
         .onDown.add(moveDown2);
 
+    //for(var countrow = 0; countrow <=13; countrow=countrow+2){ //count++ = count +1
+    //game.add.sprite(50*countrow,0,"Pipe");
+    //for(var countcolumn = 0; countcolumn <=13; countcolumn=countcolumn+2){
+    //game.add.sprite(50*countrow,50*countcolumn,"Pipe"); //for each row, add a column - do a loop within a loop to generate a grid pattern
+    //}
+    //}
+    //for (var countcol = 0; countcol <=Math.random()*13; countcol = countcol + 3)
+    //for (var countr = 0; countr <=Math.random()*8; countr++){
+        //game.add.sprite(50*countcol,countr,"Pipe");
+        //game.add.sprite(countcol,50*countr,"Pipe");
+    //}
+    var gap = Math.floor(Math.random()*12)+1
+    for(var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(100,counttop*50,"Pipe");
+    for(var countbot = gap+4; countbot <=16; countbot++) {
+        game.add.sprite(100,countbot*50,"Pipe");
+    }
+
+    }
+    var gap = Math.floor(Math.random()*12)+1
+    for(var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(300,counttop*50,"Pipe");
+        for(var countbot = gap+4; countbot <=16; countbot++) {
+            game.add.sprite(300,countbot*50,"Pipe");
+        }
+
+    }
+    var gap = Math.floor(Math.random()*12)+1
+    for(var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(500,counttop*50,"Pipe");
+        for(var countbot = gap+4; countbot <=16; countbot++) {
+            game.add.sprite(500,countbot*50,"Pipe");
+        }
+
+    }
+    var gap = Math.floor(Math.random()*12)+1
+    for(var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(700,counttop*50,"Pipe");
+        for(var countbot = gap+4; countbot <=16; countbot++) {
+            game.add.sprite(700,countbot*50,"Pipe");
+        }
+
+    }
+    var gap = Math.floor(Math.random()*12)+1
+    for(var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(900,counttop*50,"Pipe");
+        for(var countbot = gap+4; countbot <=16; countbot++) {
+            game.add.sprite(900,countbot*50,"Pipe");
+        }
+
+    }
+        //Math.random()*620
 }
 
 // function clickHandler (event) {
