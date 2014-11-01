@@ -25,7 +25,7 @@ var game = new Phaser.Game(gamewidth, gameheight, Phaser.AUTO, 'game', stateActi
 function preload() {
 game.load.image("Bman","assets/flappy_batman.png"); //load an image file & name it
 game.load.image("Sman","assets/flappy_superman.png");
-game.load.image("THOR","assets/thor2.png");
+game.load.image("THOR","assets/thorlittle.png");
 game.load.audio("score","assets/point.ogg"); //load a sound file & name it
 game.load.image("Pipe", "assets/pipe2-body.png"); //pipe body image
 game.load.image("PipeEnd","assets/pipe2-end.png"); //pipe end image
@@ -62,7 +62,7 @@ function create() {
     var x = 150;
     var y = 200;
     player = game.add.sprite(x, y, "THOR");
-    player2 = game.add.sprite(x, y, "Bman");
+    //player2 = game.add.sprite(x, y, "Bman");
     game.input
         .keyboard
         .addKey(Phaser.Keyboard.LEFT)
@@ -79,22 +79,22 @@ function create() {
         .keyboard
         .addKey(Phaser.Keyboard.DOWN)
         .onDown.add(moveDown);
-    game.input
-        .keyboard
-        .addKey(Phaser.Keyboard.A)
-        .onDown.add(moveLeft2);
-    game.input
-        .keyboard
-        .addKey(Phaser.Keyboard.D)
-        .onDown.add(moveRight2);
-    game.input
-        .keyboard
-        .addKey(Phaser.Keyboard.W)
-        .onDown.add(moveUp2);
-    game.input
-        .keyboard
-        .addKey(Phaser.Keyboard.S)
-        .onDown.add(moveDown2);
+    //game.input
+       // .keyboard
+        //.addKey(Phaser.Keyboard.A)
+        //.onDown.add(moveLeft2);
+    //game.input
+       // .keyboard
+        //.addKey(Phaser.Keyboard.D)
+        //.onDown.add(moveRight2);
+    //game.input
+        //.keyboard
+       // .addKey(Phaser.Keyboard.W)
+       // .onDown.add(moveUp2);
+    //game.input
+       // .keyboard
+        //.addKey(Phaser.Keyboard.S)
+       // .onDown.add(moveDown2);
 
     //for(var countrow = 0; countrow <=13; countrow=countrow+2){ //count++ = count +1
     //game.add.sprite(50*countrow,0,"Pipe");
