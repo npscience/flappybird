@@ -7,7 +7,7 @@ var player;
 var gamewidth;
 var gameheight;
 var gap;
-var pipe;
+var pipes;
 
 
 gamewidth = 1000;
@@ -36,8 +36,11 @@ game.load.image("PipeEnd","assets/pipe2-end.png"); //pipe end image
 function create() {
     // set the background colour of the scene
     game.stage.setBackgroundColor("#FF0000"); //sets the background colour of the stage
+    //start screen, then progress to game with a click
     game.add.text(300, 380,
         "Welcome to OUR AWESOME game!", {font: "30px Calibri", fill: "#FFFF00"} );
+
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     game.input
@@ -68,8 +71,9 @@ function create() {
     //player.body.velocity.x=150;
     player.body.gravity.y=500;
 
+    //game.physics.checkCollision(player,pipes)
 
-
+//add scoring in (i.e. at regular intervals = to interval of pipes, starting from the time it takes for the first pipe to come along
 
 
 }
@@ -82,7 +86,7 @@ function player_jump() {
 function add_pipe_part(x, y, pipe_part) {
 //grouped pipes into one object each so that player can interact with the whole pipe
     var pipe = pipes.create(x, y, pipe_part);
-    game.physics.arcade.enable(pipe);
+    game.physics.arcade.enable(pipes);
     pipe.body.velocity.x = -200;
 }
 
@@ -101,9 +105,28 @@ function generate_pipes(){
     }
 }
 
+function game_over(){
+    //TO DO: stop game, add GAME OVER screen with text and score, then option to reload on click of mouse
+    location.reload(); //when game over, just reload from beginning
+
+
+
+
+    //game.add.text(300, 380,
+        //"GAME OVER!", {font: "70px Calibri", fill: "#FFFFFF"} );
+    //alert("GAME OVER");
+}
+
 /*
  * This function updates the scene. It is called for every new frame.
  */
 function update() {
-    
+    game.physics.arcade.overlap(player,pipes,game_over);
+
+
+
+    //when player hits the pipes --> function game over
+    //checkCollision.down = false (game_over);
+
+    //game over methods: hit pipes, outofbounds
 }
