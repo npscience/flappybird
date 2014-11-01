@@ -27,8 +27,8 @@ game.load.image("Bman","assets/flappy_batman.png"); //load an image file & name 
 game.load.image("Sman","assets/flappy_superman.png");
 game.load.image("THOR","assets/thor2.png");
 game.load.audio("score","assets/point.ogg"); //load a sound file & name it
-game.load.image("Pipe", "assets/pipe.png"); //pipe image
-
+game.load.image("Pipe", "assets/pipe2-body.png"); //pipe body image
+game.load.image("PipeEnd","assets/pipe2-end.png"); //pipe end image
 }
 
 /*
@@ -44,8 +44,8 @@ function create() {
         font: "18px Calibri",
         fill: "#FFFFFF"
     });
-    game.add.text(gamewidth-20, 10, score);
-    game.add.text(gamewidth-40, gameheight-20, "V1.0", {font: "12px Calibri", fill: "#FFFFFF"}); //adds text to the stage
+    game.add.text(gamewidth - 20, 10, score);
+    game.add.text(gamewidth - 40, gameheight - 20, "V1.0", {font: "12px Calibri", fill: "#FFFFFF"}); //adds text to the stage
     //game.add.sprite(350, 260, "Bman"); //load the player img file and place it on the screen
     //game.add.sprite(250, 270, "Sman");
     //game.add.sprite(300, 260, "THOR");
@@ -104,51 +104,66 @@ function create() {
     //}
     //for (var countcol = 0; countcol <=Math.random()*13; countcol = countcol + 3)
     //for (var countr = 0; countr <=Math.random()*8; countr++){
-        //game.add.sprite(50*countcol,countr,"Pipe");
-        //game.add.sprite(countcol,50*countr,"Pipe");
+    //game.add.sprite(50*countcol,countr,"Pipe");
+    //game.add.sprite(countcol,50*countr,"Pipe");
     //}
-    var gap = Math.floor(Math.random()*12)+1
-    for(var counttop = 0; counttop <= gap; counttop++) {
-        game.add.sprite(100,counttop*50,"Pipe");
-    for(var countbot = gap+4; countbot <=16; countbot++) {
-        game.add.sprite(100,countbot*50,"Pipe");
+    var gap = Math.floor(Math.random() * 12) + 1;
+    for (var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(100, counttop * 50, "Pipe");
+        game.add.sprite(98, (gap + 1) * 50, "PipeEnd");
+    }
+    for (var countbot = gap + 4; countbot <= 16; countbot++) {
+        game.add.sprite(100, countbot * 50, "Pipe");
+        game.add.sprite(98, (gap + 4) * 50, "PipeEnd");
     }
 
-    }
-    var gap = Math.floor(Math.random()*12)+1
-    for(var counttop = 0; counttop <= gap; counttop++) {
-        game.add.sprite(300,counttop*50,"Pipe");
-        for(var countbot = gap+4; countbot <=16; countbot++) {
-            game.add.sprite(300,countbot*50,"Pipe");
+
+    var gap = Math.floor(Math.random() * 12) + 1;
+    for (var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(300, counttop * 50, "Pipe");
+        game.add.sprite(298, (gap + 1) * 50, "PipeEnd");
+        for (var countbot = gap + 4; countbot <= 16; countbot++) {
+            game.add.sprite(300, countbot * 50, "Pipe");
+            game.add.sprite(298, (gap + 4) * 50, "PipeEnd");
         }
 
     }
-    var gap = Math.floor(Math.random()*12)+1
-    for(var counttop = 0; counttop <= gap; counttop++) {
-        game.add.sprite(500,counttop*50,"Pipe");
-        for(var countbot = gap+4; countbot <=16; countbot++) {
-            game.add.sprite(500,countbot*50,"Pipe");
+
+    var gap = Math.floor(Math.random() * 12) + 1;
+    for (var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(500, counttop * 50, "Pipe");
+        game.add.sprite(498, (gap + 1) * 50, "PipeEnd");
+        for (var countbot = gap + 4; countbot <= 16; countbot++) {
+            game.add.sprite(500, countbot * 50, "Pipe");
+            game.add.sprite(498, (gap + 4) * 50, "PipeEnd");
         }
 
     }
-    var gap = Math.floor(Math.random()*12)+1
-    for(var counttop = 0; counttop <= gap; counttop++) {
-        game.add.sprite(700,counttop*50,"Pipe");
-        for(var countbot = gap+4; countbot <=16; countbot++) {
-            game.add.sprite(700,countbot*50,"Pipe");
+
+    var gap = Math.floor(Math.random() * 12) + 1;
+    for (var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(700, counttop * 50, "Pipe");
+        game.add.sprite(698, (gap + 1) * 50, "PipeEnd");
+        for (var countbot = gap + 4; countbot <= 16; countbot++) {
+            game.add.sprite(700, countbot * 50, "Pipe");
+            game.add.sprite(698, (gap + 4) * 50, "PipeEnd");
         }
 
     }
-    var gap = Math.floor(Math.random()*12)+1
-    for(var counttop = 0; counttop <= gap; counttop++) {
-        game.add.sprite(900,counttop*50,"Pipe");
-        for(var countbot = gap+4; countbot <=16; countbot++) {
-            game.add.sprite(900,countbot*50,"Pipe");
+
+    var gap = Math.floor(Math.random() * 12) + 1;
+    for (var counttop = 0; counttop <= gap; counttop++) {
+        game.add.sprite(900, counttop * 50, "Pipe");
+        game.add.sprite(898, (gap + 1) * 50, "PipeEnd");
+        for (var countbot = gap + 4; countbot <= 16; countbot++) {
+            game.add.sprite(900, countbot * 50, "Pipe");
+            game.add.sprite(898, (gap + 4) * 50, "PipeEnd");
         }
 
     }
-        //Math.random()*620
+
 }
+
 
 // function clickHandler (event) {
 //    alert(event.x + ":" + event.y);
