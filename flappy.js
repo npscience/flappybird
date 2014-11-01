@@ -53,7 +53,7 @@ function create() {
     // var y = 200;
 
     pipes = game.add.group();
-    generate_pipes();
+    game.time.events.loop(1.75*Phaser.Timer.SECOND,generate_pipes); //generate pipes every 1.75 seconds
 
 
 
@@ -75,27 +75,29 @@ function create() {
 }
 
 function player_jump() {
-    //the smaller the number the higher it jumps
-    player.body.velocity.y = -250;
+    //the smaller (more negative) the number the higher it jumps
+    player.body.velocity.y = -300; //+= -300 means that velocity increases with each spacebar hit, i.e. starts with slow jump then gets to be bigger jump as you continue mashing
 }
 
 function add_pipe_part(x, y, pipe_part) {
+//grouped pipes into one object each so that player can interact with the whole pipe
     var pipe = pipes.create(x, y, pipe_part);
     game.physics.arcade.enable(pipe);
     pipe.body.velocity.x = -200;
 }
 
 function generate_pipes(){
-    var pipe_offset = 1000;
+//randomly generates pipe with a gap coming in from the right
+    var pipe_offset = 1000; //value is the furthest right of your frame, could call in gamewidth! NB: pipe size is 50
     var gapStart = Math.floor(Math.random()*12)+1;
-    var gapSize = 3;
-    for (var counttop = 0; counttop < gapStart; counttop++) {
+    var gapSize = 4;
+    for (var counttop = 0; counttop < gapStart; counttop++) {//top of pipe, before gap
         add_pipe_part(pipe_offset, counttop * 50, "Pipe");
         add_pipe_part(pipe_offset-2, (gapStart) * 50, "PipeEnd");
     }
-    for (var countbot = gapStart + gapSize+1; countbot <= 16; countbot++) {
+    for (var countbot = gapStart + gapSize+1; countbot <= 16; countbot++) {//bottom of pipe, after gap
         add_pipe_part(pipe_offset, countbot * 50, "Pipe");
-        add_pipe_part(pipe_offset-2, (gapStart + 4) * 50, "PipeEnd");
+        add_pipe_part(pipe_offset-2, (gapStart+gapSize+1) * 50, "PipeEnd");
     }
 }
 
